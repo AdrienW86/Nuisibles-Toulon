@@ -1,0 +1,28 @@
+@import "tailwindcss";
+
+@theme {
+  /* Palette personnalisée pour Nuisibles Nantes */
+  --color-brand-green-50: #f0f9f4;
+  --color-brand-green-500: #2d6a4f;
+  --color-brand-green-600: #1b4332;
+  
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+/* On garde le support Dark Mode si besoin, mais on le bride pour le blanc */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #2d6a4f;
+    --foreground: #ededed;
+  }
+}
+
+@layer base {
+  body {
+    background: var(--background);
+    color: var(--foreground);
+    font-family: 'Inter', sans-serif; /* Plus professionnel pour du B2B */
+  }
+}
+
