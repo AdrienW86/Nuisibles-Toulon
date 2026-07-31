@@ -34,7 +34,7 @@ export default function CallForm() {
         <div className="text-center mb-12">
           <h2 className="text-3xl font-black text-zinc-900 mb-4">Réservez votre appel</h2>
           <p className="text-zinc-600">
-            Vous avez des questions ou besoin d'une intervention urgente à Nantes ? 
+            Vous avez des questions ou besoin d'une intervention urgente à Toulon ? 
             Remplissez ce formulaire, nous vous rappelons sous 2h.
           </p>
         </div>

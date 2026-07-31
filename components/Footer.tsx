@@ -40,7 +40,7 @@ export default function Footer() {
         <div className="flex flex-col gap-2">
           <h4 className="font-bold text-zinc-900 mb-2">Contact</h4>
           <span className="text-sm text-zinc-600">Toulon, 83000</span>
-          <a href="tel:+33698144222" className="text-sm font-bold text-brand-green-600">06 98 14 42 22</a>
+          <a href="tel:+33762240168" className="text-sm font-bold text-brand-green-600">07 62 24 01 68</a>
         </div>
 
         {/* Colonne 4 : Branding */}
