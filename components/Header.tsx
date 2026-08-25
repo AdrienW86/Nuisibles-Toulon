@@ -27,7 +27,7 @@ export default function Header() {
   const handlePhoneClick = () => {
     if (typeof window !== 'undefined' && typeof window.gtag === 'function') {
       window.gtag('event', 'conversion', {
-        send_to: 'AW-18366446985/VOTRE_LABEL_DE_CONVERSION', // Remplace VOTRE_LABEL_DE_CONVERSION par la valeur fournie par Google Ads
+        send_to: 'AW-18366446985/yGpHCMjW0docEIn75rVE', 
       });
     }
   };
@@ -116,3 +116,5 @@ export default function Header() {
     </header>
   );
 }
+
+  
