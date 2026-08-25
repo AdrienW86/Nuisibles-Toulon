@@ -3,6 +3,13 @@ import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 
+// Typage pour éviter les erreurs TypeScript avec window.gtag
+declare global {
+  interface Window {
+    gtag?: (...args: any[]) => void;
+  }
+}
+
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [isServicesOpen, setIsServicesOpen] = useState(false);
@@ -16,6 +23,15 @@ export default function Header() {
     { name: 'Guêpes & Frelons', href: '/guepes-frelons' },
   ];
 
+  // Fonction pour envoyer la conversion à Google Ads
+  const handlePhoneClick = () => {
+    if (typeof window !== 'undefined' && typeof window.gtag === 'function') {
+      window.gtag('event', 'conversion', {
+        send_to: 'AW-18366446985/VOTRE_LABEL_DE_CONVERSION', // Remplace VOTRE_LABEL_DE_CONVERSION par la valeur fournie par Google Ads
+      });
+    }
+  };
+
   return (
     <header className="bg-white border-b border-zinc-200 sticky top-0 z-50 shadow-sm">
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
@@ -23,14 +39,13 @@ export default function Header() {
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 group">
           <div className="relative flex items-center justify-center w-20 h-20 rounded-lg ">
-            {/* <svg viewBox="0 0 24 24" fill="white" className="w-6 h-6"><path d="M12 1L3 5v6c0 5.5 3.8 10.7 9 12 5.2-1.3 9-6.5 9-12V5l-9-4z" /></svg> */}
             <Image 
               src="/logo.png"
               alt="Logo Nuisibles Toulon"
               width={70}
               height={70}
               className="object-contain"
-              />
+            />
           </div>
           <div className="flex flex-col">
             <span className="text-xl font-black text-zinc-900 leading-tight">NUISIBLES</span>
@@ -68,7 +83,11 @@ export default function Header() {
           <Link href="/a-propos" className="text-zinc-800 font-semibold text-sm hover:text-brand-green-600">À propos</Link>
           <Link href="/contact" className="text-zinc-800 font-semibold text-sm hover:text-brand-green-600">Contact</Link>
           
-          <Link href="tel:+33762240168" className="bg-brand-green-600 text-white px-5 py-2.5 rounded-full font-bold text-sm hover:bg-brand-green-700 shadow-md">
+          <Link 
+            href="tel:+33762240168" 
+            onClick={handlePhoneClick}
+            className="bg-brand-green-600 text-white px-5 py-2.5 rounded-full font-bold text-sm hover:bg-brand-green-700 shadow-md"
+          >
             07 62 24 01 68
           </Link>
         </div>
@@ -84,6 +103,14 @@ export default function Header() {
           ))}
           <Link href="/a-propos" onClick={() => setIsOpen(false)}>À propos</Link>
           <Link href="/contact" onClick={() => setIsOpen(false)}>Contact</Link>
+          
+          <Link 
+            href="tel:+33762240168" 
+            onClick={() => { handlePhoneClick(); setIsOpen(false); }}
+            className="bg-brand-green-600 text-white text-center py-2.5 rounded-full font-bold text-sm hover:bg-brand-green-700 mt-2"
+          >
+            07 62 24 01 68
+          </Link>
         </div>
       )}
     </header>
